@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+temp_face_analysis.jpg
+.DS_Store
+.idea/
+*.log
