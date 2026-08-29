@@ -6,3 +6,4 @@ deepface
 numpy
 tf-keras
 python-multipart
+gradio

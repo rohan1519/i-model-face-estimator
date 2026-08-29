@@ -1,6 +1,7 @@
 import os
 import base64
 import logging
+import gradio as gr
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -108,7 +109,17 @@ async def analyze_uploaded_file(file: UploadFile = File(...)):
             "message": str(e)
         }
 
+# Create a dummy Gradio app to satisfy Hugging Face Space Gradio SDK
+with gr.Blocks(title="I Model API") as demo:
+    gr.Markdown("# I Model (Face Detection & Age/Glow Estimator) API is running!")
+    gr.Markdown("Click [here](/) to open the premium interface dashboard.")
+
+# Mount Gradio onto our FastAPI application
+app = gr.mount_gradio_app(app, demo, path="/gradio")
+
 if __name__ == "__main__":
     import uvicorn
-    # Start the server locally
-    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
+    # Check if running on Hugging Face (which sets PORT environment variable, usually 7860)
+    port = int(os.environ.get("PORT", 8000))
+    # In Hugging Face or local, start uvicorn
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=False)
