@@ -1,4 +1,16 @@
+---
+title: IModel Face Estimator
+emoji: 👁️
+colorFrom: green
+colorTo: blue
+sdk: gradio
+sdk_version: 4.19.2
+app_file: app.py
+pinned: false
+---
+
 # I Model (Face Detection & Age/Glow Estimator)
+
 
 A premium, modern web application that analyzes a user's face (via live webcam or image upload) to estimate their **age** and **skin glow index** (brightness, texture smoothness, and color uniformity). Based on the results, it generates personalized, age-customized skincare routines and lifestyle recommendations (**Khao, Piyo, Lagao**) to protect the skin against dust, pollution, and pimples.
 
